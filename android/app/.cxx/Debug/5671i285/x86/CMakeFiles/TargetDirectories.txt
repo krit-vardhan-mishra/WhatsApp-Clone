@@ -1,0 +1,2 @@
+E:/Git-Hub/WhatsApp_Clone/android/app/.cxx/Debug/5671i285/x86/CMakeFiles/edit_cache.dir
+E:/Git-Hub/WhatsApp_Clone/android/app/.cxx/Debug/5671i285/x86/CMakeFiles/rebuild_cache.dir

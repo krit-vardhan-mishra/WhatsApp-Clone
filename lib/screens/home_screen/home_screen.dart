@@ -15,9 +15,9 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
   int _selectedIndex = 0;
 
   static final List<Widget> _screens = [
-    Chats(),
-    Calls(),
-    Status(),
+    const Chats(),
+    const Calls(),
+    const Statuses(),
   ];
 
   void _onItemTapped(int index) {
@@ -29,34 +29,9 @@ class _CustomHomeScreenState extends State<CustomHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
-      floatingActionButton: Stack(
-        children: [
-          Positioned(
-            bottom: 80,
-            right: 10,
-            child: FloatingActionButton.small(
-              onPressed: () {},
-              shape: CircleBorder(),
-              child: Icon(
-                Icons.circle,
-                size: 25,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 10,
-            right: 10,
-            child: FloatingActionButton(
-                onPressed: () => {},
-                backgroundColor: Colors.white,
-                child: Image.asset(
-                  'assets/icons/whatsapp_chat.png',
-                  height: 24,
-                  width: 24,
-                )),
-          ),
-        ],
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _screens,
       ),
       bottomNavigationBar: NavBar(
         selectedIndex: _selectedIndex,

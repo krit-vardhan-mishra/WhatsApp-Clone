@@ -10,6 +10,8 @@ class Status extends StatefulWidget {
 class _StatusState extends State<Status> {
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Center(
+        child: Text('Item From Status', style: TextStyle(color: Colors.black))
+    );
   }
 }

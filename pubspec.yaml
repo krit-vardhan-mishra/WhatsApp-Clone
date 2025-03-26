@@ -61,9 +61,8 @@ flutter_launcher_icons:
 flutter:
 
   assets:
-    - assets/images/whatsapp_business_icon.png
-    - assets/icons/whatsapp_status.png
-    - assets/icons/whatsapp_chat.png
+    - assets/images/
+    - assets/icons/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

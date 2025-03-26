@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/screens/acrhives/archived.dart';
 import '../../app_bar/app_bar.dart';
+import 'chat.dart';
 
 class Chats extends StatefulWidget {
   const Chats({super.key});
@@ -35,42 +37,64 @@ class _ChatsState extends State<Chats> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          color: Colors.black38,
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text.rich(
-                  TextSpan(text: 'My', children: [
-                    TextSpan(
-                        text: 'Flutter',
-                        style: TextStyle(
-                            fontSize: 50.0,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.deepOrange[200])),
-                    TextSpan(
-                        text: 'App',
-                        style:
-                            TextStyle(fontSize: 30.0, color: Colors.redAccent)),
-                  ]),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  'From Chats',
-                  style: TextStyle(fontSize: 20.0, color: Colors.black),
-                ),
-                for (int i = 0; i < 40; i++)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child:
-                        Text('Item $i', style: TextStyle(color: Colors.white)),
-                  ),
-              ],
+      body: ListView.builder(
+        itemCount: 40,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const ArchivedChats()),
+                      );
+                    },
+                    child: Text("Archived Chats"),
+                  )
+                ],
+              ),
+            );
+          } else if (index == 1) {
+            return Divider();
+          } else {
+            return Chat();
+          }
+        },
+      ),
+      floatingActionButton: Stack(
+        children: [
+          Positioned(
+            bottom: 80,
+            right: 10,
+            child: FloatingActionButton.small(
+              onPressed: () {},
+              shape: CircleBorder(),
+              elevation: 1,
+              child: Icon(
+                Icons.circle,
+                size: 25,
+              ),
             ),
           ),
-        ),
+          Positioned(
+            bottom: 10,
+            right: 10,
+            child: FloatingActionButton(
+              onPressed: () => {},
+              backgroundColor: Colors.white,
+              elevation: 1,
+              child: Image.asset(
+                'assets/icons/whatsapp_chat.png',
+                height: 24,
+                width: 24,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

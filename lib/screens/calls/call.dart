@@ -10,6 +10,7 @@ class Call extends StatefulWidget {
 class _CallState extends State<Call> {
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Center(
+        child: Text('Item From Call', style: TextStyle(color: Colors.black)));
   }
 }
