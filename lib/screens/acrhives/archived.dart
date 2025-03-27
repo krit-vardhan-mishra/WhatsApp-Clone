@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../chats/chat.dart';
+
 class ArchivedChats extends StatefulWidget {
   const ArchivedChats({super.key});
 
@@ -32,15 +34,12 @@ class _ArchivedChatsState extends State<ArchivedChats> {
               textAlign: TextAlign.center,
             ),
           ),
-          const Divider(),
           Expanded(
             child: ListView.builder(
                 itemCount: 40,
                 itemBuilder: (context, index) {
-                  return const ListTile(
-                    title: Text("Archived Chat Item"),
-                    subtitle: Text("Last message preview..."),
-                  );
+                  print("Loading Chat $index");
+                  return Chat();
                 }),
           ),
         ],

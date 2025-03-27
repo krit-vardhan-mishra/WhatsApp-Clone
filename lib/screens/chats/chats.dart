@@ -11,6 +11,13 @@ class Chats extends StatefulWidget {
 }
 
 class _ChatsState extends State<Chats> {
+  void openArchive() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ArchivedChats()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,53 +52,57 @@ class _ChatsState extends State<Chats> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ArchivedChats()),
-                      );
-                    },
-                    child: Text("Archived Chats"),
+                  GestureDetector(
+                    onTap: openArchive,
+                    child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                Icon(Icons.archive, color: Colors.black),
+                                SizedBox(width: 10),
+                                Text("Archived Chats",
+                                    style: TextStyle(color: Colors.black)),
+                              ],
+                            ),
+                            Text("5",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        )),
                   )
                 ],
               ),
             );
-          } else if (index == 1) {
-            return Divider();
           } else {
             return Chat();
           }
         },
       ),
-      floatingActionButton: Stack(
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Positioned(
-            bottom: 80,
-            right: 10,
-            child: FloatingActionButton.small(
-              onPressed: () {},
-              shape: CircleBorder(),
-              elevation: 1,
-              child: Icon(
-                Icons.circle,
-                size: 25,
-              ),
-            ),
+          FloatingActionButton.small(
+            onPressed: () {},
+            shape: CircleBorder(),
+            elevation: 1,
+            child: Icon(Icons.circle, size: 25),
           ),
-          Positioned(
-            bottom: 10,
-            right: 10,
-            child: FloatingActionButton(
-              onPressed: () => {},
-              backgroundColor: Colors.white,
-              elevation: 1,
-              child: Image.asset(
-                'assets/icons/whatsapp_chat.png',
-                height: 24,
-                width: 24,
-              ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: () {}, // Correct syntax
+            backgroundColor: Colors.white,
+            elevation: 1,
+            child: Image.asset(
+              'assets/icons/whatsapp_chat.png',
+              height: 24,
+              width: 24,
             ),
           ),
         ],

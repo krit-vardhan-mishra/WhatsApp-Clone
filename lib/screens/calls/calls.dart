@@ -40,38 +40,68 @@ class _CallsState extends State<Calls> {
         itemCount: 40,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return Center(
+            return Padding(
+              padding: const EdgeInsets.all(5.0),
               child: Column(
-                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text.rich(
-                    TextSpan(text: 'My', children: [
-                      TextSpan(
-                          text: 'Flutter',
-                          style: TextStyle(
-                              fontSize: 50.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepOrange[200])),
-                      TextSpan(
-                          text: 'App',
-                          style: TextStyle(
-                              fontSize: 30.0, color: Colors.redAccent)),
-                    ]),
-                    textAlign: TextAlign.center,
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Favourite Call",
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    ),
                   ),
+                  SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Icon(Icons.account_circle_rounded,
+                          size: 50, color: Colors.black),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Favourite Chat Call",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(right: 10),
+                        child: Icon(Icons.ac_unit_sharp, color: Colors.black),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20),
                   Text(
-                    'From Calls',
-                    style: TextStyle(fontSize: 20.0, color: Colors.black),
+                    "Recent",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             );
-          } else if (index == 1) {
-            return Divider();
           } else {
-            return Padding(padding: const EdgeInsets.all(10.0), child: Call());
+            return Call();
           }
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {},
+        backgroundColor: Colors.white,
+        elevation: 1,
+        child: Icon(
+          Icons.add_ic_call_sharp,
+          color: Colors.black,
+        ),
       ),
     );
   }
