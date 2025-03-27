@@ -45,6 +45,7 @@ class _ChatsState extends State<Chats> {
         ],
       ),
       body: ListView.builder(
+        padding: EdgeInsets.only(bottom: 50),
         itemCount: 40,
         itemBuilder: (context, index) {
           if (index == 0) {

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp_clone/screens/status/status.dart';
+import 'package:whatsapp_clone/screens/status/your_status.dart';
 import '../../app_bar/app_bar.dart';
+import 'channels/channels.dart';
+import 'muted_status.dart';
 
 class Statuses extends StatefulWidget {
   const Statuses({super.key});
@@ -40,39 +43,38 @@ class _StatusesState extends State<Statuses> {
         itemCount: 40,
         itemBuilder: (context, index) {
           if (index == 0) {
-            return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text.rich(
-                    TextSpan(text: 'My', children: [
-                      TextSpan(
-                          text: 'Flutter',
-                          style: TextStyle(
-                              fontSize: 50.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepOrange[200])),
-                      TextSpan(
-                          text: 'App',
-                          style: TextStyle(
-                              fontSize: 30.0, color: Colors.redAccent)),
-                    ]),
-                    textAlign: TextAlign.center,
+                  SizedBox(height: 140, width: 100, child: YourStatus()),
+                  SizedBox(width: 10,),
+                  Expanded(
+                    child: SizedBox(
+                      height: 140,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            if (index == 9) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Status(),
+                              );
+                            }
+                            return MutedStatus();
+                          }),
+                    ),
                   ),
-                  Text(
-                    'From Status',
-                    style: TextStyle(fontSize: 20.0, color: Colors.black),
-                  ),
+                  SizedBox(width: 10,),
                 ],
               ),
             );
           } else if (index == 1) {
             return Divider();
           } else {
-            return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Status()
-            );
+            return Channels();
           }
         },
       ),
@@ -84,7 +86,10 @@ class _StatusesState extends State<Statuses> {
             child: FloatingActionButton.small(
               onPressed: () {},
               elevation: 1,
-              child: Icon(Icons.mode_edit_rounded, size: 15,),
+              child: Icon(
+                Icons.mode_edit_rounded,
+                size: 15,
+              ),
             ),
           ),
           Positioned(
@@ -94,7 +99,11 @@ class _StatusesState extends State<Statuses> {
               onPressed: () => {},
               backgroundColor: Colors.white,
               elevation: 1,
-              child: Icon(Icons.linked_camera_rounded, size: 25, color: Colors.black,),
+              child: Icon(
+                Icons.linked_camera_rounded,
+                size: 25,
+                color: Colors.black,
+              ),
             ),
           ),
         ],
