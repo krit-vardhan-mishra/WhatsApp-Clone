@@ -21,10 +21,7 @@ class _StatusesState extends State<Statuses> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
-              Icons.camera_alt_outlined,
-              color: Colors.white,
-            ),
+            icon: Icon(Icons.camera_alt_outlined, color: Colors.white),
             highlightColor: Colors.white60,
           ),
           IconButton(
@@ -41,6 +38,7 @@ class _StatusesState extends State<Statuses> {
       ),
       body: ListView.builder(
         itemCount: 40,
+        padding: EdgeInsets.only(bottom: 20),
         itemBuilder: (context, index) {
           if (index == 0) {
             return Padding(
@@ -49,25 +47,26 @@ class _StatusesState extends State<Statuses> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 140, width: 100, child: YourStatus()),
-                  SizedBox(width: 10,),
+                  SizedBox(width: 10),
                   Expanded(
                     child: SizedBox(
                       height: 140,
                       child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 10,
-                          itemBuilder: (context, index) {
-                            if (index == 9) {
-                              return Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Status(),
-                              );
-                            }
-                            return MutedStatus();
-                          }),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          if (index == 9) {
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: MutedStatus(),
+                            );
+                          }
+                          return Status();
+                        },
+                      ),
                     ),
                   ),
-                  SizedBox(width: 10,),
+                  SizedBox(width: 10),
                 ],
               ),
             );
@@ -86,24 +85,18 @@ class _StatusesState extends State<Statuses> {
             child: FloatingActionButton.small(
               onPressed: () {},
               elevation: 1,
-              child: Icon(
-                Icons.mode_edit_rounded,
-                size: 15,
-              ),
+              child: Icon(Icons.mode_edit_rounded, size: 15),
             ),
           ),
           Positioned(
             bottom: 10,
             right: 10,
             child: FloatingActionButton(
-              onPressed: () => {},
+              onPressed: () {},
               backgroundColor: Colors.white,
               elevation: 1,
-              child: Icon(
-                Icons.linked_camera_rounded,
-                size: 25,
-                color: Colors.black,
-              ),
+              child: Icon(Icons.linked_camera_rounded,
+                  size: 25, color: Colors.black),
             ),
           ),
         ],
